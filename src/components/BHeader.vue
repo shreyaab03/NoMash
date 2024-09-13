@@ -14,6 +14,15 @@
         <li class="nav-item" v-if="isAuthenticated">
           <button class="btn btn-link nav-link" @click="$emit('logout')">Logout</button>
         </li>
+        <li class="nav-item">
+          <router-link to="/FireLogin" class="nav-link" active-class="active">Firebase Login</router-link>
+        </li>
+        <li class="nav-item">
+          <router-link to="/FireRegister" class="nav-link" active-class="active">Firebase Register</router-link>
+        </li>
+        <li class="nav-item">
+          <router-link to="/addBook" class="nav-link" active-class="active">Add Book</router-link>
+        </li>
       </ul>
     </header>
   </div>

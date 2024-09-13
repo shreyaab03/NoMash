@@ -25,7 +25,6 @@ const logout = () => {
 </template>
 
 <style scoped>
-/* Retaining your custom styles */
 .container {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   max-width: 80vw;
