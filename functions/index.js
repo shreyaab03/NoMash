@@ -1,4 +1,4 @@
-const functions = require("firebase-functions"); // 1st Gen functions
+const functions = require("firebase-functions");
 const admin = require("firebase-admin");
 const cors = require("cors")({origin: true});
 
@@ -17,6 +17,16 @@ exports.countBooks = functions.https.onRequest((req, res) => {
       res.status(500).send("Error counting books");
     }
   });
+});
+
+exports.getBooksAPI = functions.https.onRequest(async (req, res) => {
+  try {
+    const booksCollection = await admin.firestore().collection("books").get();
+    const books = booksCollection.docs.map(doc => doc.data());
+    res.status(200).json(books);
+  } catch (error) {
+    res.status(500).send("Error fetching books: " + error.message);
+  }
 });
 
 exports.capitalizeBookData = functions.firestore
