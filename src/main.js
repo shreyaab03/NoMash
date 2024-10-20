@@ -1,16 +1,16 @@
-import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-import { createApp } from 'vue'
-import App from './App.vue'
-import router from './router'
+import { createApp } from 'vue';
+import App from './App.vue';
+import router from './router';
 
-import PrimeVue from 'primevue/config'
-import Aura from '@primevue/themes/aura'
+import PrimeVue from 'primevue/config';
+import Aura from '@primevue/themes/aura';
 
+// Create Vue app instance
+const vueApp = createApp(App);
+vueApp.use(PrimeVue, { theme: { preset: Aura } });
+vueApp.use(router);
 
-const app = createApp(App)
-app.use(PrimeVue, { theme: { preset: Aura } })
-app.use(router)
-
-app.mount('#app')
+vueApp.mount('#app');
 
