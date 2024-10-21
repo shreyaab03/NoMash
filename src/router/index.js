@@ -9,60 +9,60 @@ import GetBookCountView from '@/views/GetBookCountView.vue';
 import WeatherView from '@/views/WeatherView.vue';
 import CountBookAPI from '@/views/CountBookAPI.vue';
 
-const routes = [
-  {
-    path: '/',
-    name: 'Home',
-    component: HomeView,
-  },
-  {
-    path: '/about',
-    name: 'About',
-    component: AboutView,
-    meta: { requiresAuth: true },
-  },
-  {
-    path: '/login',
-    name: 'Login',
-    component: LoginView,
-  },
-  {
-    path: '/FireLogin',
-    name: 'FireLogin',
-    component: FirebaseSigninView,
-  },
-  {
-    path: '/FireRegister',
-    name: 'FireRegister',
-    component: FirebaseRegisterView,
-  },
-  {
-    path: '/addbook',
-    name: 'AddBook',
-    component: AddBookView,
-  },
-  {
-    path: '/WeatherCheck',
-    name: 'WeatherCheck',
-    component: WeatherView,
-  },
-  {
-    path: '/GetBookCount',
-    name: 'GetBookCount',
-    component: GetBookCountView,
-  },
-  {
-    path: '/CountBookAPI',
-    name: 'CountBookAPI',
-    component: CountBookAPI
-  }
-];
-
+// Use environment variable or default to root '/'
 const router = createRouter({
-  history: createWebHistory(),
-  routes,
+  history: createWebHistory(import.meta.env.VITE_APP_BASE_URL || '/'),
+  routes: [
+    {
+      path: '/',
+      name: 'Home',
+      component: HomeView,
+    },
+    {
+      path: '/about',
+      name: 'About',
+      component: AboutView,
+      meta: { requiresAuth: true },
+    },
+    {
+      path: '/login',
+      name: 'Login',
+      component: LoginView,
+    },
+    {
+      path: '/FireLogin',
+      name: 'FireLogin',
+      component: FirebaseSigninView,
+    },
+    {
+      path: '/FireRegister',
+      name: 'FireRegister',
+      component: FirebaseRegisterView,
+    },
+    {
+      path: '/addbook',
+      name: 'AddBook',
+      component: AddBookView,
+    },
+    {
+      path: '/WeatherCheck',
+      name: 'WeatherCheck',
+      component: WeatherView,
+    },
+    {
+      path: '/GetBookCount',
+      name: 'GetBookCount',
+      component: GetBookCountView,
+    },
+    {
+      path: '/CountBookAPI',
+      name: 'CountBookAPI',
+      component: CountBookAPI,
+    }
+  ]
 });
 
+// Before each route check for authentication
 router.beforeEach((to, from, next) => {
   const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true';
   if (to.meta.requiresAuth && !isAuthenticated) {

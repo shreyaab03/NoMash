@@ -14,5 +14,7 @@ export default defineConfig({
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
-  }
+  },
+  // Add the base URL configuration here
+  base: process.env.VITE_APP_BASE_URL || '/'
 })
